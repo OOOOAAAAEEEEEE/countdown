@@ -12,25 +12,36 @@
     />
   </head>
   <body class="font-Stardos bg-black">
-    <div class="min-h-screen w-full">
-      <video
-        class="opacity-80"
-        autoplay
-        controls
-        muted
-        loop
-        src="./asset/siracusa.webm"
-      ></video>
+    <div class="flex justify-center" id="loader">
+      <img class="absolute bottom-1/3" src="./asset/loader.svg" alt="loader" />
     </div>
-    <div class="absolute w-full bottom-1/4">
-      <div class="flex justify-center">
-        <p class="mx-1 xl:text-6xl text-3xl text-white" id="days"></p>
-        <p class="mx-1 xl:text-6xl text-3xl text-white" id="hours"></p>
-        <p class="mx-1 xl:text-6xl text-3xl text-white" id="mins"></p>
-        <p class="mx-1 xl:text-6xl text-3xl text-white" id="secs"></p>
-        <h2 id="end"></h2>
+    <div class="hidden" id="content">
+      <div class="min-h-screen w-full">
+        <video
+          class="opacity-80"
+          autoplay
+          controls
+          muted
+          loop
+          src="./asset/siracusa.webm"
+        ></video>
+      </div>
+      <div class="absolute w-full bottom-1/4">
+        <div class="flex justify-center">
+          <p class="mx-1 xl:text-6xl text-3xl text-white" id="days"></p>
+          <p class="mx-1 xl:text-6xl text-3xl text-white" id="hours"></p>
+          <p class="mx-1 xl:text-6xl text-3xl text-white" id="mins"></p>
+          <p class="mx-1 xl:text-6xl text-3xl text-white" id="secs"></p>
+          <h2 id="end"></h2>
+        </div>
       </div>
     </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+      integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script>
       // The data/time we want to countdown to
       var countDownDate = new Date("May 24, 2023 00:00:01").getTime();
@@ -64,6 +75,12 @@
           document.getElementById("end").innerHTML = "TIME UP!!";
         }
       }, 1000);
+    </script>
+    <script>
+      $(window).on("load", function () {
+        $("#loader").hide();
+        $("#content").removeClass("hidden");
+      });
     </script>
   </body>
 </html>
