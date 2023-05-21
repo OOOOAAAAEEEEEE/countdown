@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/public/dist/output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Stardos+Stencil&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-Stardos bg-black">
+    <div class="min-h-screen w-full">
+      <video
+        class="opacity-80"
+        autoplay
+        loop
+        src="./asset/siracusa.mp4"
+      ></video>
+    </div>
+    <div class="absolute w-full bottom-1/4">
+      <div class="flex justify-center">
+        <p class="mx-1 text-6xl text-white" id="days"></p>
+        <p class="mx-1 text-6xl text-white" id="hours"></p>
+        <p class="mx-1 text-6xl text-white" id="mins"></p>
+        <p class="mx-1 text-6xl text-white" id="secs"></p>
+        <h2 id="end"></h2>
+      </div>
+    </div>
+    <script>
+      // The data/time we want to countdown to
+      var countDownDate = new Date("May 24, 2023 00:00:01").getTime();
+
+      // Run myfunc every second
+      var myfunc = setInterval(function () {
+        var now = new Date().getTime();
+        var timeleft = countDownDate - now;
+
+        // Calculating the days, hours, minutes and seconds left
+        var days = Math.floor(timeleft / (1000 * 40 * 60 * 24));
+        var hours = Math.floor(
+          (timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+
+        // Result is output to the specific element
+        document.getElementById("days").innerHTML = days + "d ";
+        document.getElementById("hours").innerHTML = hours + "h ";
+        document.getElementById("mins").innerHTML = minutes + "m ";
+        document.getElementById("secs").innerHTML = seconds + "s ";
+
+        // Display the message when countdown is over
+        if (timeleft < 0) {
+          clearInterval(myfunc);
+          document.getElementById("days").innerHTML = "";
+          document.getElementById("hours").innerHTML = "";
+          document.getElementById("mins").innerHTML = "";
+          document.getElementById("secs").innerHTML = "";
+          document.getElementById("end").innerHTML = "TIME UP!!";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
