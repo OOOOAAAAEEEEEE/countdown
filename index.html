@@ -20,12 +20,16 @@
         <video
           class="opacity-80"
           autoplay
-          controls
           muted
           loop
           id="myVideo"
           src="./asset/siracusa.webm"
         ></video>
+      </div>
+      <div class="flex justify-center">
+        <div class="text-white absolute top-1/4 text-4xl" id="hideTextUnmute">
+          Tap to Unmute
+        </div>
       </div>
       <div class="absolute w-full bottom-1/4">
         <div class="flex justify-center">
@@ -81,13 +85,21 @@
       let vid = document.getElementById("myVideo");
       let loader = document.getElementById("loader");
       let content = document.getElementById("content");
+      let hide = document.getElementById("hideTextUnmute");
 
       vid.onloadedmetadata = function () {
         loader.classList.add("hidden");
         content.classList.remove("hidden");
-
-        // alert("Metadata for video loaded");
       };
+
+      vid.addEventListener("click", function () {
+        vid.muted = !vid.muted;
+        if (vid.muted) {
+          hide.classList.remove("hidden");
+        } else {
+          hide.classList.add("hidden");
+        }
+      });
     </script>
   </body>
 </html>
