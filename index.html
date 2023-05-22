@@ -23,6 +23,7 @@
           controls
           muted
           loop
+          id="myVideo"
           src="./asset/siracusa.webm"
         ></video>
       </div>
@@ -77,10 +78,16 @@
       }, 1000);
     </script>
     <script>
-      $(window).on("load", function () {
-        $("#loader").hide();
-        $("#content").removeClass("hidden");
-      });
+      let vid = document.getElementById("myVideo");
+      let loader = document.getElementById("loader");
+      let content = document.getElementById("content");
+
+      vid.onloadedmetadata = function () {
+        loader.classList.add("hidden");
+        content.classList.remove("hidden");
+
+        // alert("Metadata for video loaded");
+      };
     </script>
   </body>
 </html>
